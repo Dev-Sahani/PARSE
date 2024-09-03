@@ -8,12 +8,13 @@ export default function ReportLayout({
 }: {
   children: ReactNode;
   params: {
-    filename: string;
+    doc_name: string;
   };
 }) {
+  console.log(params);
   return (
     <div className="flex">
-      <Sidebar filename={params.filename} />
+      <Sidebar filename={params.doc_name} />
       <div className="w-full">
         <Navbar />
         <main className="p-6 pt-0">{children}</main>

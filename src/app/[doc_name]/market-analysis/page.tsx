@@ -20,13 +20,13 @@ function InitialInfo() {
       <div className="flex justify-between gap-6">
         <NumberCard
           title="Profit Predicted"
-          number={45634321}
+          number={4563410}
           percentage={89}
           type="currency"
         />
         <NumberCard
           title="Market Cap"
-          number={6546543}
+          number={154654398}
           percentage={89}
           type="currency"
         />
