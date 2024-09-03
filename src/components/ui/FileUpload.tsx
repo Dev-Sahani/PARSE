@@ -79,6 +79,8 @@ export default function FileUpload({ text = "Choose File" }) {
               { name: "Completion Ratio", value: isNotAllowed },
               { name: "Incomplete", value: 100 - isNotAllowed },
             ]}
+            height={280}
+            width={400}
             dataKey="value"
             tooltipKey="name"
           />
