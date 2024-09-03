@@ -7,8 +7,12 @@ type FinalData =
       status: 200;
     }
   | {
-      status: 500 | 406;
+      status: 500;
       message: string;
+    }
+  | {
+      status: 406;
+      completeness_percentage: number;
     };
 
 export const extractData = async (formData: FormData) => {
@@ -39,14 +43,18 @@ export const extractData = async (formData: FormData) => {
       throw new Error("Cannot parse the pdf.");
     }
   } catch (error) {
-    if ((error as Error).message === "MISSING_VALUE") {
-      return { status: 406, message: "pdf has misssing values!" } as FinalData;
+    const msg = (error as Error).message;
+    if (msg.startsWith("MISSING_VALUE")) {
+      return {
+        status: 406,
+        completeness_percentage: Number(msg.split("_")[2]),
+      } as FinalData;
     }
 
     console.error("Error:", error);
     return {
       status: 500,
-      message: (error as Error)?.message || "Something went wrong",
+      message: msg || "Something went wrong",
     } as FinalData;
   }
 };
@@ -77,7 +85,8 @@ async function getData(extracted_text: string) {
   console.log(res);
   console.log(completePercentage);
 
-  if (completePercentage < 80) throw new Error("MISSING_VALUE");
+  if (completePercentage < 80)
+    throw new Error("MISSING_VALUE_" + completePercentage.toString());
 
   return {
     data: JSON.parse(
