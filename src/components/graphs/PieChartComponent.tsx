@@ -19,7 +19,7 @@ export default function PieChartComponent({
   colors?: string[];
 }) {
   return (
-    <ResponsiveContainer width={500} height={280} className="bg-secondary">
+    <ResponsiveContainer width={width} height={height} className="bg-secondary">
       <PieChart>
         <Pie
           data={data}
