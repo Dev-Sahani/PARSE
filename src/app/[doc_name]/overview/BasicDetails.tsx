@@ -1,4 +1,5 @@
 import { Data } from "./page"
+import PieChartComponent from "@/components/graphs/PieChartComponent"
 
 interface Prop {
   data: Data
@@ -6,7 +7,7 @@ interface Prop {
 
 export default ({ data }: Prop) => {
   return <div className="p-6 bg-secondary">
-    <div className="flex h-full w-full">
+    <div className="flex justify-between h-full w-full">
       <div className="w-[60%]">
         {/* Heading of Product */}
         <h1 className="text-4xl font-bold my-2">{data.ProductName}</h1>
@@ -40,8 +41,18 @@ export default ({ data }: Prop) => {
         </div>
       </div>
 
+      {/* Donut Graph chart */}
       <div>
-        {/* Donut Graph chart */}
+        <PieChartComponent
+          data={[
+            { name: "Success Ratio", value: 82 },
+            { name: "", value: 100 - 82 },
+          ]}
+          dataKey="value"
+          tooltipKey="name"
+          width={330}
+          height={290}
+        />
       </div>
     </div>
   </div>
