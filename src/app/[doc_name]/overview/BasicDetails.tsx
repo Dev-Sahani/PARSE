@@ -37,12 +37,13 @@ export default ({ data }: Prop) => {
         {/* Descriptions */}
         <div>
           <span className="text-sm font-semibold my-2">Description: </span>
-          {data.ProductName}
+          The Wild Stone CODE Sunscreen Gel Creme is a versatile, dermatologically tested product suitable for all skin types. It offers broad-spectrum protection with SPF 30, making it ideal for daily use, particularly during summer and festive seasons.
         </div>
       </div>
 
       {/* Donut Graph chart */}
-      <div>
+      <div className="relative">
+        <h3 className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Success ration</h3>
         <PieChartComponent
           data={[
             { name: "Success Ratio", value: 82 },

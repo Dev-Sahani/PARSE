@@ -14,7 +14,7 @@ export default function OverviewPage() {
     </div>
     <div className="my-8">
       <h3 className="text-xl font-semibold">Competetive Price</h3>
-      <CompetetivePrice data={data}/>
+      <CompetetivePrice />
     </div>
   </div>;
 }

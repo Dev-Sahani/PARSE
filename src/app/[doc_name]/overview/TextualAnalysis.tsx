@@ -5,20 +5,17 @@ interface Prop {
 }
 
 const pros: string[] = [
-  "High-quality ingredients with a rich chocolate chip flavor",
-  "Premium positioning with attractive packaging",
-  "Wide range of cookie variants (including chocolate chip, fruit-flavored, and center-filled cookies)",
-  "Crisp texture and balanced sweetness",
-  "Affordable pricing compared to international premium cookie brands",
-  "Strong brand reputation in the Indian market"
+  "Broad Market Appeal: The product is suitable for all skin types, including sensitive skin, making it a versatile option for a wide range of customers.",
+  "High Profit Margins: The product offers a gross margin of around 50%, with 22% allocated to marketing, ensuring profitability.",
+  "Dermatologically Tested: The sunscreen is dermatologically tested, which enhances consumer trust and can boost sales.",
+  "Seasonal Sales Boost: The product has strong sales during summer and festive seasons, aligning well with peak retail periods.",
 ]
 const cons: string[] = [
-  "Limited availability in some regions, especially in international markets",
-  "Competitors offer similar products at comparable or lower prices",
-  "Some customers might find the cookies too sweet or rich",
-  "Packaging size options may be limited, which might not cater to all customer needs (e.g., larger family packs)",
+  "Competition: Sunscreen is a competitive market, and the product's unique selling points may need strong marketing to stand out.",
+  "Seasonal Dependency: Sales are primarily driven by summer holidays and festive seasons, which could lead to fluctuations in demand during off-peak times.",
+  "Price Sensitivity: The retail price, while competitive, may still be a consideration for price-sensitive customers, especially if similar products are available at lower prices.",
 ]
-const conclusion : string = "Parle Milano stands out as a premium yet affordable cookie option, well-regarded for its rich flavor and quality ingredients. While it enjoys strong customer loyalty in the Indian market, addressing availability issues and expanding packaging options could further enhance its appeal."
+const conclusion : string = "The Wild Stone CODE Sunscreen Gel Creme offers a high-margin, dermatologically tested product suitable for all skin types, with peak sales during summer and festive seasons. However, it faces strong market competition and has seasonal sales dependencies, which could impact overall sales performance during off-peak periods."
 
 export default ({ data }: Prop) => {
   return (
