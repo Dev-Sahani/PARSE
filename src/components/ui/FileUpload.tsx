@@ -3,16 +3,11 @@
 import { ChangeEvent, useState } from "react";
 import { Skeleton } from "./skeleton";
 import { ImFolderUpload } from "react-icons/im";
-import { uploadFile } from "@/app/api/uplaod-pdf";
-
-type Data = {
-  data: object | null;
-  completeness_percentage: number;
-};
+import { extractData } from "@/app/api/uplaod-pdf";
 
 export default function FileUpload({ text = "Choose File" }) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<Data | null>(null);
+  const [isNotAllowed, setisNotAllowed] = useState<boolean>(false);
 
   const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
@@ -20,21 +15,43 @@ export default function FileUpload({ text = "Choose File" }) {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("filename", file.name);
-      const res = await uploadFile(formData);
-      if (res) setData(res);
-      else window.alert("File cannot be found.");
+      formData.append("filename", file.name?.split(" ").join("_"));
+
+      const res = await extractData(formData);
+      // const res = {
+      //   status: 200,
+      //   data: {
+      //     "Product Name": "CODE Sunscreen Gel Creme",
+      //     Category: "Beauty & Health",
+      //     Sub_category: "Skincare",
+      //     Price: 315,
+      //     Rating: 4.6,
+      //     No_rating: 5,
+      //     Discount: 10,
+      //     M_Spend: 2200,
+      //     Supply_Chain_E: 78,
+      //     Sales_y: 10600,
+      //     Sales_m: 883,
+      //     Market_T: 3.5,
+      //     Seasonality_T: 5,
+      //   },
+      //   completeness_percentage: 100,
+      // };
+      if (res.status === 500) {
+        window.alert(res.message || "Something went wrong");
+      } else if (res.status === 406) {
+        setisNotAllowed(true);
+      } else if (res.status === 200) {
+        console.log(res);
+        console.log(res.data);
+      }
     }
     setLoading(false);
   };
 
   if (loading) return <Skeleton className="w-full h-64" />;
-  if (data) {
-    return (
-      <div className="w-full h-full">
-        {JSON.stringify(data) || "Nothing is present in the pdf"}
-      </div>
-    );
+  if (isNotAllowed) {
+    return <div className="w-full h-full">Not Allowed</div>;
   }
 
   return (
