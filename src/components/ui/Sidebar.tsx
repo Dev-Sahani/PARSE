@@ -9,7 +9,13 @@ import { MdExplore } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
-export default function Sidebar({ className }: { className?: string }) {
+export default function Sidebar({
+  className,
+  filename,
+}: {
+  className?: string;
+  filename: string;
+}) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -32,7 +38,7 @@ export default function Sidebar({ className }: { className?: string }) {
 
       <main className="w-full flex items-center">
         <ul className="h-full flex flex-col gap-4">
-          {sidebarList.map((item) => (
+          {getSidebarList(filename).map((item) => (
             <li
               key={item.to}
               className={cn(
@@ -46,7 +52,7 @@ export default function Sidebar({ className }: { className?: string }) {
         </ul>
         {isOpen && (
           <ul className="h-full w-full flex flex-col gap-4 leading-4">
-            {sidebarList.map((item) => (
+            {getSidebarList(filename).map((item) => (
               <li
                 key={item.to}
                 className={cn(
@@ -66,20 +72,20 @@ export default function Sidebar({ className }: { className?: string }) {
   );
 }
 
-const sidebarList = [
+const getSidebarList = (filename: string) => [
   {
     title: "Overview",
     icon: <ImHome className="w-6 h-6" />,
-    to: "/report/overview",
+    to: `/${filename}/overview`,
   },
   {
     title: "Market Analysis",
     icon: <MdExplore className="w-8 h-8 ml-[-2px]" />,
-    to: "/report/market-analysis",
+    to: `/${filename}/market-analysis`,
   },
   {
     title: "Competitive Analysis",
     icon: <CgProfile className="w-6 h-6" />,
-    to: "/report/competitive-analysis",
+    to: `/${filename}/competitive-analysis`,
   },
 ];
