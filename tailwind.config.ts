@@ -62,6 +62,15 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      keyframes: {
+        pulseOpacity: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.25" },
+        },
+      },
+      animation: {
+        pulseOpacity: "pulseOpacity 4s infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

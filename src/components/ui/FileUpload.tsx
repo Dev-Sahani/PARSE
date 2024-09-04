@@ -6,6 +6,7 @@ import { ImFolderUpload } from "react-icons/im";
 import { extractData } from "@/app/api/uplaod-pdf";
 import PieChartComponent from "@/components/graphs/PieChartComponent";
 import { useRouter } from "next/navigation";
+import Loading from "./Loading/Loading";
 
 export default function FileUpload({ text = "Choose File" }) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -60,7 +61,7 @@ export default function FileUpload({ text = "Choose File" }) {
     setLoading(false);
   };
 
-  if (loading) return <Skeleton className="w-full h-64" />;
+  if (loading) return <Loading />;
 
   return (
     <div className="flex min-h-64 justify-between items-strech bg-secondary">
