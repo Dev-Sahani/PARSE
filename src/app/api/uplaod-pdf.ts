@@ -21,13 +21,13 @@ export const extractData = async (formData: FormData) => {
   try {
     filename = (formData.get("filename") as string).split(" ").join("_");
 
-    // const response = await fetch("http://localhost:5001/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // });
-    const response = await sleep(100);
+    const response = await fetch("http://localhost:5001/upload", {
+      method: "POST",
+      body: formData,
+    });
+    // const response = await sleep(100);
     if (response.ok) {
-      // const data = await response.json();
+      const data = await response.json();
       // const data = {
       //   status: 200,
       //   data: {
@@ -47,7 +47,7 @@ export const extractData = async (formData: FormData) => {
       //   },
       //   completeness_percentage: 100,
       // };
-      const data = { extracted_text: "Hello World" };
+      // const data = { extracted_text: "Hello World" };
       console.log(data);
       await uploadToFile(data.extracted_text || "Hello World", filename);
       // const data = {
@@ -82,48 +82,47 @@ export const extractData = async (formData: FormData) => {
 };
 
 export async function textToData(extracted_text: string) {
-  // const response = await fetch("http://localhost:5000/process", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({ data: extracted_text }),
-  // });
+  const response = await fetch("http://localhost:5000/process", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ data: extracted_text }),
+  });
 
-  // if (!response.ok) throw new Error(response.statusText);
+  if (!response.ok) throw new Error(response.statusText);
 
-  // const res = (await response.json()).result as string;
-  // console.log(res);
-  const res = `[TextBlock(text='{"Product Name": "Good Day Biscuits", "Category": "Home & Kitchen", "Sub_category": "Cookware", "Price": 30, "Rating": 4.3, "No_rating": 15000, "Discount": 10, "M_Spend": 1000, "Supply_Chain_E": 90.0, "Sales_y": 106000, "Sales_m": 8833, "Market_T": 2.5, "Seasonality_T": 5.0}\n\nCompleteness percentage: 100%', type='text')]`;
+  const res = (await response.json()).result as string;
+  console.log(res);
+  // const res = `[TextBlock(text='{"Product Name": "Good Day Biscuits", "Category": "Home & Kitchen", "Sub_category": "Cookware", "Price": 30, "Rating": 4.3, "No_rating": 15000, "Discount": 10, "M_Spend": 1000, "Supply_Chain_E": 90.0, "Sales_y": 106000, "Sales_m": 8833, "Market_T": 2.5, "Seasonality_T": 5.0}\n\nCompleteness percentage: 100%', type='text')]`;
   // "[TextBlock(text='Not complete\nCompleteness percentage: 0%', type='text')]"
 
-  const completePercentage = Number(
-    res.substring(
-      res.lastIndexOf("Completeness percentage: ") +
-        "Completeness percentage: ".length,
+  const completePercentage = res
+    .substring(
+      res.lastIndexOf('"Completeness percentage": ') +
+        '"Completeness percentage": '.length,
       res.lastIndexOf("%")
     )
-  );
-  const data = JSON.stringify(
-    await JSON.parse(res.substring(res.indexOf("{"), res.lastIndexOf("}") + 1))
-  );
+    .replaceAll('"', "");
+
   console.log(res);
   console.log(completePercentage);
-  console.log(data);
-  console.log(
-    res.substring(
-      res.lastIndexOf("Completeness percentage: ") +
-        "Completeness percentage: ".length,
-      res.lastIndexOf("%")
-    )
-  );
 
-  if (completePercentage < 80)
-    throw new Error("MISSING_VALUE_" + completePercentage.toString());
+  let data = "{}";
+
+  if (Number(completePercentage) < 80)
+    throw new Error("MISSING_VALUE_" + completePercentage);
+  else
+    data = JSON.stringify(
+      await JSON.parse(
+        res.substring(res.indexOf("{"), res.lastIndexOf("}") + 1)
+      )
+    );
+  console.log(data);
 
   return {
     data: JSON.parse(data) as object,
-    completeness_percentage: completePercentage,
+    completeness_percentage: Number(completePercentage),
   };
 }
 

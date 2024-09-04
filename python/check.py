@@ -34,10 +34,10 @@ Seasonality Trends: Fluctuations in product sales or demand related to specific 
        Electronics/Fashion"(use only out of these) "Sub_category": "Cookware/Outdoor Gear/ Makeup/ Appliances/ Furniture/
        Haircare/ Fitness Equipment/ Smartphones/ Tablets/
        Accessories/ Clothing/ Cameras/ Laptops/ Footwear/(use only out of these)
-       Skincare", "Price": , "Rating": , "No_rating": , "Discount": , "M_Spend" 1000 - 10000: , "Supply_Chain_E" "50.0 - 99.9: , "Sales_y": , "Sales_m": , "Market_T":-5.0 - 5.0 , "Seasonality_T" : -10.0 - 10}"""
+       Skincare", "Price": , "Rating": , "No_rating": , "Discount": , "M_Spend" 1000 - 10000: , "Supply_Chain_E" "50.0 - 99.9: , "Sales_y": , "Sales_m": , "Market_T":-5.0 - 5.0 , "Seasonality_T" : -10.0 - 10, "Completeness percentage": "x%"}"""
 
     # Compose the message
-    prompt = f"i have this text block whoch contains data i want you check weather this contains all the arributes mentioned in  attribues and generate a complenteness precentage if not return message not complete along with completeness precentage else if the data has all attributes convert in to the given format and only fill the attributes and return the json format and completeness percentage don't return anything else only return the attributes in specified format data and completeness percentage don't add any special characres like line space or  data ,attributes and format are present at the end of message {data}{attributes}{format_}. If possible please output the data in pure json format."
+    prompt = f"i have this text which contains data i want you check weather this contains all the arributes mentioned in  attribues and generate a complenteness precentage if not return message empty json object along with completeness precentage else if the data has all attributes convert in to the given format and only fill the attributes and return the json format and completeness percentage don't return anything else only return the attributes in specified format data and completeness percentage don't add any special characres like line space or  data ,attributes and format are present at the end of message {data}{attributes}{format_}. If possible please output the data in pure json format in any condition."
 
     # Make a request to Anthropic's Claude model
     message = client.messages.create(

@@ -1,0 +1,44 @@
+Dev Sahani
++91 9685100383 | sahanidev2003@gmail.com | https://www.linkedin.com/in/dev-sahani | https://github.com/Dev-Sahani |
+https://leetcode.com/u/DevSahani/
+EDUCATION
+Institution Name
+Timeline
+Oct 2021 - Dec 2022
+Â· Institute of Engineering and Technology, DAVV
+Bachelor of Engineering - Computer Engineering; CGPA: 9.1
+Â· Central Board of Secondary Education 12th - 93.8 % (2020 - 2021) 10th - 93% (2018-19)
+MAJOR COURSEWORK
+Data Structures and Algorithms (DSA), Operating Systems (OS), Database Management System (DBMS), Object Oriented Programming (OOPs), Computer Networks (CN)
+SKILLS
+Â· Languages:
+C\C++, Javascript, Typescript, HTML, CSS, SQL
+Â· Frameworks:
+ReactJs, NextJs , ExpressJs, NodeJs, Tailwind CSS
+Â· Tools:
+MongoDb, MySql, Git, GitHub, Figma
+Â· Soft- Skills:
+UI/UX, Fast Learner, Problem Solving, Time Management.
+PROJECTS
+I. AICTE-Curriculum-Design-Web-Portal: A customized web-portal build for AICTE curriculums developers for SIH Hackathon, to create, edit curriculums collaboratively with the functionality of version control, data analysis, real-time updates etc. Learnings: Tailwind CSS, puppeteer, Docker, version-control, Figma, UX, framer-motion, JWT, Cookies. Link: https://github.com/Dev-Sahani/AICTE CURRICULUM DESIGN PORTAL Live Link: https://aicte-curriculum-design-portal.onrender.com/
+II. AgarIo: A Multiplayer Real-Time browser game where a player can kill (or eat) other players. Learnings: Socket.io, HTML canva API, functioning of multiplayer-game, OOPS Github: https://github.com/Dev-Sahani/Agar-Clone Live: https://agar-clone-gumc.onrender.com/
+III. Jobify: This is a learning project based on MERN stack development. Jobify is a web-app where a user can check-out new jobs, upload jobs etc (basically CRUD operations with Access Management, Pagination, Showing graphs visuals in React (Recharts library etc.) Learnings: React, Express, Mongodb, Authentication, REST API. Github: https://github.com/Dev-Sahani/Jobify Live: https://jobify-Ofwn.onrender.com/
+ACHIEVEMENTS & EXTRA CURRICULUAR
+Â· Smart India Hackathon(SIH) 2023 Finalist
+. KNIGHT at Leetcode - Rating 2080 or top 1.9%, 100+ days of consistent streak - link
+Â· Specialist (Rating - 1489) at codeforces - link
+Â· 3 star Coder (1700+ rating) @codechef
+Â· MOI Hackathon winner - build decentralized academics record app using MOI Technology
+Â· Freelancing: build a website for AR-MEDIA-HOUSE
+Â· Machine Learning certified form Coursera
+Â· Google Developer Student Club - DSA & CP Lead
+
+
+<<<
+
+
+
+
+
+
+
