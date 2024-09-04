@@ -43,7 +43,7 @@ export default ({ data }: Prop) => {
 
       {/* Donut Graph chart */}
       <div className="relative">
-        <h3 className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Success ration</h3>
+        <h3 className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Success ratio</h3>
         <PieChartComponent
           data={[
             { name: "Success Ratio", value: 82 },

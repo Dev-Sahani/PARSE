@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { ImHome } from "react-icons/im";
-import { MdExplore } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
+import Image from "next/image";
+import { IoDocumentTextSharp } from "react-icons/io5"
+import { BsGraphUp } from "react-icons/bs"
+import { SiSimilarweb } from "react-icons/si";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 export default function Sidebar({
@@ -60,7 +61,10 @@ export default function Sidebar({
                   pathname == item.to && "bg-accent text-primary"
                 )}
               >
-                <Link className="mt-1" href={item.to}>
+                <Link  
+                  className="mt-1"
+                  href={item.to}
+                >
                   {item.title}
                 </Link>
               </li>
@@ -75,17 +79,17 @@ export default function Sidebar({
 const getSidebarList = (filename: string) => [
   {
     title: "Overview",
-    icon: <ImHome className="w-6 h-6" />,
+    icon: <IoDocumentTextSharp className="w-6 h-6" />,
     to: `/${filename}/overview`,
   },
   {
     title: "Market Analysis",
-    icon: <MdExplore className="w-8 h-8 ml-[-2px]" />,
+    icon: <BsGraphUp width={24} height={24} className="w-8 h-8 ml-[-2px]" />,
     to: `/${filename}/market-analysis`,
   },
   {
     title: "Competitive Analysis",
-    icon: <CgProfile className="w-6 h-6" />,
+    icon: <SiSimilarweb className="w-6 h-6" />,
     to: `/${filename}/competitive-analysis`,
   },
 ];
