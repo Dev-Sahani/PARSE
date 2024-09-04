@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-import { Skeleton } from "./skeleton";
 import { ImFolderUpload } from "react-icons/im";
 import { extractData } from "@/app/api/uplaod-pdf";
 import PieChartComponent from "@/components/graphs/PieChartComponent";

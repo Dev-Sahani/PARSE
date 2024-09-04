@@ -8,11 +8,11 @@ export default async function OverviewPage({
 }: {
   params: { doc_name: string };
 }) {
-  // console.log(params.doc_name);
-  // if (params.doc_name) {
-  //   const res = await getBasicDetails(params.doc_name);
-  //   console.log(res);
-  // }
+  const data = (await getBasicDetails(params.doc_name)) as Data;
+  console.log("Data = ", data);
+  if (!("Product Name" in data)) {
+    return <div>Data cannot be fetched</div>;
+  }
 
   return (
     <div>
@@ -33,7 +33,7 @@ export default async function OverviewPage({
 }
 
 export type Data = {
-  ProductName: string;
+  "Product Name": string;
   Category: string;
   Sub_category: string;
   Price: number;
@@ -46,6 +46,7 @@ export type Data = {
   Sales_m: number;
   Market_T: number;
   Seasonality_T: number;
+  "Completeness percentage": string;
 };
 
 const data = {
